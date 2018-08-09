@@ -1,0 +1,9 @@
+server:
+  tomcat:
+    remote-ip-header: x-forward-for
+    uri-encoding: UTF-8
+    max-threads: 10
+    background-processor-delay: 30
+    accept-count: 100
+    max-connections: 200
+    min-spare-threads: 15

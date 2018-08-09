@@ -1,0 +1,56 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+    statusPageUrlPath: /swagger-ui.html
+    #  如果项目配置有 server.servlet.context-path 属性，想要被 spring boot admin 监控，就要配置以下属性
+#    metadata-map:
+#      management:
+#        context-path: ${server.servlet.context-path}/actuator
+#    health-check-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/health
+#    status-page-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/info
+#    home-page-url: http://localhost:${server.port}/
+
+server:
+  port: 8382
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: spring-demo-service-feign
+  zipkin:
+    #Zipkin Server 的 ip:port，这里换成自己的 Zipkin Server 的 IP 即可
+    #    base-url: http://192.168.174.128:9411/
+    #为了测试 rabbitmq 的集成，修改为错误指向
+    base-url: http://localhost:9410/
+  #这里把抽样百分比设置为1，即信息全部采集
+  sleuth:
+    sampler:
+      probability: 1.0
+
+feign:
+  hystrix:
+    enabled: true
+
+# Ribbon 的负载均衡策略
+spring-demo-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+info:
+  version: 1.0.0

@@ -1,0 +1,41 @@
+server:
+  port: 8761
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: springcloud-eureka
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    #  如果项目配置有 server.servlet.context-path 属性，想要被 spring boot admin 监控，就要配置以下属性
+    metadata-map:
+      management:
+        context-path: ${server.servlet.context-path}/actuator
+    health-check-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/health
+    status-page-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/info
+    home-page-url: http://localhost:${server.port}/
+  client:
+    # 表示是否注册自身到eureka服务器
+    register-with-eureka: true
+    # 是否从eureka上获取注册信息
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+#  server:
+#    enable-self-preservation: true
+#    eviction-interval-timer-in-ms: 4000
+
+logging:
+  level:
+    root: INFO
+
+management:
+  security:
+    enabled: false
+#
+#security:
+#  basic:
+#    enabled: false

@@ -1,0 +1,109 @@
+server:
+  port: 8281
+
+eureka:
+  instance:
+    hostname: ${hostname:localhost}
+    preferIpAddress: true
+  server:
+    peerEurekaNodesUpdateIntervalMs: 60000
+    enableSelfPreservation: false
+  client:
+    serviceUrl:
+      # 向每个注册中心注册
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    healthcheck:
+      enabled: true
+    eurekaServiceUrlPollIntervalSeconds: 60
+
+spring:
+  application:
+    name: springcloud-producer-service
+  #redis配置
+  redis:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+    cluster:
+      nodes: 10.101.70.158:7000,10.101.70.158:7001,10.101.70.158:7002,10.101.70.158:7003,10.101.70.158:7004,10.101.70.158:7005
+  #rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    #mq发送应答
+#    publisherConfirms: true
+    #connection closed异常需要加配置
+    cache:
+      channel:
+        size: 200
+  #stream配置
+  cloud:
+    stream:
+      bindings:
+        myInput:
+          #指定输入通道对应的主题名
+          destination: minestream
+          #指定该应用实例属于 stream 消费组
+          group: stream
+          contentType: application/json
+          consumer:
+            #通过该参数开启消费者分区功能
+            partitioned: true
+        myOutput:
+          #指定输出通道对应的主题名
+          destination: minestream
+          producer:
+            #通过该参数指定了分区键的表达式规则，可以根据实际的输出消息规则配置 SpEL 来生成合适的分区键
+            partitionKeyExpression: payload
+            partitionCount: 2
+      #该参数指定了当前消费者的总实例数量
+      instance-count: 2
+      #该参数设置了当前实例的索引号，从 0 开始，最大值为 spring.cloud.stream.instance-count 参数 - 1
+      instance-index: 0
+    #屏蔽虚拟机ip
+    inetutils:
+      ignoredInterfaces:
+        - VMware*
+  #zipkin配置
+  zipkin:
+    #Zipkin Server 的 ip:port，这里换成自己的 Zipkin Server 的 IP 即可
+    #    base-url: http://192.168.174.128:9411/
+    #为了测试 rabbitmq 的集成，修改为错误指向
+    base-url: http://localhost:9410/
+  #这里把抽样百分比设置为1，即信息全部采集
+  sleuth:
+    sampler:
+      probability: 1.0
+  #数据库连接配置
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/job?characterEncoding=utf8&useSSL=false
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+#admin client配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+#redisson配置
+redisson:
+  timeout: 3000
+  clusterAddresses: ${spring.redis.cluster.nodes}
+
+env: dev
+dev_meta: http://${eureka.instance.hostname}:8761
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: testxt #product.yaml
+

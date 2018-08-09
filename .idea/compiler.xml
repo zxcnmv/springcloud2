@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="apollo-adminservice" />
+        <module name="apollo-assembly" />
+        <module name="apollo-biz" />
+        <module name="apollo-buildtools" />
+        <module name="apollo-client" />
+        <module name="apollo-common" />
+        <module name="apollo-configservice" />
+        <module name="apollo-core" />
+        <module name="apollo-demo" />
+        <module name="apollo-portal" />
+        <module name="component-lock" />
+        <module name="component-rabbitmq" />
+        <module name="component-redis" />
+        <module name="framework-dao" />
+        <module name="framework-service" />
+        <module name="framework-sharding-dao" />
+        <module name="redis" />
+        <module name="saturn-console" />
+        <module name="saturn-console-api" />
+        <module name="saturn-console-core" />
+        <module name="saturn-console-old" />
+        <module name="saturn-core" />
+        <module name="saturn-embed" />
+        <module name="saturn-executor" />
+        <module name="saturn-integrate" />
+        <module name="saturn-it" />
+        <module name="saturn-job-api" />
+        <module name="saturn-job-sharding" />
+        <module name="saturn-plugin" />
+        <module name="springcloud-admin" />
+        <module name="springcloud-consumer-feign" />
+        <module name="springcloud-consumer-ribbon" />
+        <module name="springcloud-eureka" />
+        <module name="springcloud-gateway" />
+        <module name="springcloud-hystrix-dashboard" />
+        <module name="springcloud-hystrix-dashboard-turbine" />
+        <module name="springcloud-producer" />
+        <module name="springcloud-zipkin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="apollo" target="1.8" />
+      <module name="apollo-adminservice" target="1.8" />
+      <module name="apollo-assembly" target="1.8" />
+      <module name="apollo-biz" target="1.8" />
+      <module name="apollo-buildtools" target="1.8" />
+      <module name="apollo-client" target="1.8" />
+      <module name="apollo-common" target="1.8" />
+      <module name="apollo-configservice" target="1.8" />
+      <module name="apollo-core" target="1.8" />
+      <module name="apollo-demo" target="1.8" />
+      <module name="apollo-portal" target="1.8" />
+      <module name="component-lock" target="1.8" />
+      <module name="component-rabbitmq" target="1.8" />
+      <module name="component-redis" target="1.8" />
+      <module name="framework-dao" target="1.8" />
+      <module name="framework-service" target="1.8" />
+      <module name="framework-sharding-dao" target="1.8" />
+      <module name="redis" target="1.8" />
+      <module name="saturn-console" target="1.7" />
+      <module name="saturn-console-api" target="1.7" />
+      <module name="saturn-console-core" target="1.7" />
+      <module name="saturn-console-old" target="1.7" />
+      <module name="saturn-console-web" target="1.8" />
+      <module name="saturn-core" target="1.7" />
+      <module name="saturn-embed" target="1.7" />
+      <module name="saturn-executor" target="1.7" />
+      <module name="saturn-integrate" target="1.7" />
+      <module name="saturn-it" target="1.7" />
+      <module name="saturn-job" target="1.8" />
+      <module name="saturn-job-api" target="1.7" />
+      <module name="saturn-job-sharding" target="1.7" />
+      <module name="saturn-plugin" target="1.7" />
+      <module name="springcloud-admin" target="1.8" />
+      <module name="springcloud-component" target="1.8" />
+      <module name="springcloud-consumer-feign" target="1.8" />
+      <module name="springcloud-consumer-ribbon" target="1.8" />
+      <module name="springcloud-eureka" target="1.8" />
+      <module name="springcloud-framework" target="1.8" />
+      <module name="springcloud-gateway" target="1.8" />
+      <module name="springcloud-hystrix-dashboard" target="1.8" />
+      <module name="springcloud-hystrix-dashboard-turbine" target="1.8" />
+      <module name="springcloud-producer" target="1.8" />
+      <module name="springcloud-zipkin" target="1.8" />
+      <module name="springcloud2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: apollo-configservice
+  profiles:
+    active: ${apollo_profile}
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+ctrip:
+  appid: 100003171
+  
+server:
+  port: 8761
+  
+logging:
+  file: /opt/logs/100003171/apollo-configservice.log

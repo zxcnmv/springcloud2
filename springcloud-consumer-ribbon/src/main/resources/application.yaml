@@ -1,0 +1,87 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+    statusPageUrlPath: /swagger-ui.html
+server:
+  port: 8381
+spring:
+  application:
+    name: spring-consumer-service-ribbon
+  zipkin:
+    #Zipkin Server 的 ip:port，这里换成自己的 Zipkin Server 的 IP 即可
+    #    base-url: http://192.168.174.128:9411/
+    #为了测试 rabbitmq 的集成，修改为错误指向
+    base-url: http://localhost:9410/
+  #这里把抽样百分比设置为1，即信息全部采集
+  sleuth:
+    sampler:
+      probability: 1.0
+spring-demo-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+logging:
+  level.com: debug
+
+#读写分离
+#sharding:
+#   jdbc:
+#    data-sources:
+#      ds_master:
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/job?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#        username: root
+#        password: 123456
+#      ds_slave_0:
+#        driver-class-name: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/job_slave?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#        username: root
+#        password: 123456
+#    master-slave-rule:
+#      name: ds_ms
+#      master-data-source-name: ds_master
+#      slave-data-source-names: ds_slave_0
+#      load-balance-algorithm-type: round_robin
+
+#分库分表
+sharding:
+  jdbc:
+    shardingRule:
+      default-database-strategy:
+        inline:
+          algorithm-expression: ds${id % 2}
+          sharding-column: id
+      tables:
+          user:
+            actual-data-nodes: ds${0..1}.user_${0..1}
+            key-generator-column-name: id
+            table-strategy:
+              inline:
+                algorithm-expression: user_${id % 2}
+                sharding-column: id
+    data-sources:
+      ds0:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: 123456
+        url: jdbc:mysql://localhost:3306/job?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+      ds1:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: 123456
+        url: jdbc:mysql://localhost:3306/job_slave?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root

@@ -1,0 +1,40 @@
+server:
+  port: 8764
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: springcloud-hystrix-dashboard-turbine
+
+turbine:
+  instanceUrlSuffix: hystrix.stream
+  # 配置 Eureka 中的 serviceId 列表，指定要监控的服务
+#  app-config: '*'
+  aggregator:
+    cluster-config: default
+  # 指定集群名称
+  cluster-name-expression: new String("default")
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+    statusPageUrlPath: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+  server:
+    servlet:
+      context-path: /

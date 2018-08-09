@@ -1,0 +1,94 @@
+server:
+  port: 8762
+  servlet:
+    context-path: /
+  http2:
+    enabled: false
+  tomcat:
+    accept-count: 100
+    max-connections: 200
+    min-spare-threads: 15
+    max-threads: 200
+spring:
+  application:
+     name: springcloud-gateway
+#  security:
+#    user:
+#      name: "user"
+#      password: "password"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #是否与eureka服务发现组件进行结合
+          lowerCaseServiceId: true #使用小写规则，默认大写
+          filters:
+          - StripPrefix=1
+      httpclient:
+        connectTimeout: 3000
+        pool:
+          name: "gateway"
+
+#      routes:
+#        - id: springcloud-producer-service
+#          uri: lb://springcloud-producer-service
+#          order: 10000
+#          predicates:
+#            - Path=${server.servlet.context-path}/springcloud-producer-service/**
+#          filters:
+#            - StripPrefix=1
+#            - name: Hystrix #熔断
+#              args:
+#                name: fallbackcmd
+#                fallbackUri: forward:/incaseoffailureusethis
+#            - name: RateCheck #频率限制
+#              args:
+#                keyResolver: apiKeyResolver
+#        - id: websocket_test
+#          uri: ws://localhost:9000
+#          order: 9000
+#          predicates:
+#            - Path=/echo
+#          filters:
+#            - StripPrefix=1
+#            - JwtCheck #jwt校验
+#熔断配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+    prefer-ip-address: true
+    statusPageUrlPath: /swagger-ui.html
+#  如果项目配置有 server.servlet.context-path 属性，想要被 spring boot admin 监控，就要配置以下属性
+#    metadata-map:
+#      management:
+#        context-path: ${server.servlet.context-path}/actuator
+#    health-check-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/health
+#    status-page-url: http://localhost:${server.port}${server.servlet.context-path}/actuator/info
+#    home-page-url: http://localhost:${server.port}/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
