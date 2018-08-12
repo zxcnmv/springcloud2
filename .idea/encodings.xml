@@ -43,6 +43,5 @@
     <file url="file://$PROJECT_DIR$/springcloud-hystrix-dashboard" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud-hystrix-dashboard-turbine" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud-producer" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springcloud-zipkin" charset="UTF-8" />
   </component>
 </project>

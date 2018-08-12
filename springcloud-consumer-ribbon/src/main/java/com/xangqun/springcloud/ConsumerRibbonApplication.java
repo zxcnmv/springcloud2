@@ -5,6 +5,7 @@ import com.netflix.loadbalancer.RandomRule;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -20,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumerRibbonApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerRibbonApplication.class, args);
+        SpringApplication app = new SpringApplication(ConsumerRibbonApplication.class);
+        app.addListeners(new ApplicationPidFileWriter());//把运行的pid打印到文件里
+        app.run(args);
     }
 
     @Bean

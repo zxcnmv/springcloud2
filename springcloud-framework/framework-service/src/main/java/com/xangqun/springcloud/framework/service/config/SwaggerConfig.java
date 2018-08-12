@@ -23,7 +23,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(prefix = "api.swagger", value = "title")
+@ConditionalOnProperty(name = "swagger.enable", havingValue = "true")
 public class SwaggerConfig {
 
     @Bean

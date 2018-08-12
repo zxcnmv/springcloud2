@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "custom.name",
+      "type": "java.lang.String",
+      "sourceType": "com.xangqun.springcloud.properties.StaticProperties"
+    }
+  ]
+}

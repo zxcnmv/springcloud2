@@ -4,27 +4,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-eureka/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-hystrix-dashboard-turbine/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-producer/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-consumer-ribbon/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-consumer-feign/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-zipkin/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-framework/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-component/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-component/component-rabbitmq/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-framework/framework-dao/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-framework/framework-service/pom.xml" />
-        <option value="$PROJECT_DIR$/springcloud-component/component-lock/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="true" project-jdk-name="10" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
   </component>
 </project>

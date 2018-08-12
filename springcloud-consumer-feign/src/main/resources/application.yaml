@@ -22,6 +22,12 @@ server:
   servlet:
     context-path: /
 
+wss:
+  server:
+    port: 9093
+    host: 0.0.0.0
+    host: http://localhost:${server.port}
+
 spring:
   application:
     name: spring-demo-service-feign
@@ -54,3 +60,10 @@ management:
         show-details: ALWAYS
 info:
   version: 1.0.0
+
+#日志
+logging:
+#日志配置文件位置
+  config: classpath:logback.xml
+#日志打印位置，这里是默认在项目根路径下
+  path: log/spring-boot-log

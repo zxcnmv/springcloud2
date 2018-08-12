@@ -12,6 +12,8 @@ eureka:
 server:
   port: 8381
 spring:
+  pid:
+    file: /var/log/app.pid
   application:
     name: spring-consumer-service-ribbon
   zipkin:
@@ -28,6 +30,9 @@ spring-demo-service:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 management:
+  endpoint:
+    chaosmonkey:
+      enabled: true #混合测试配置
   endpoints:
     web:
       exposure:
@@ -77,11 +82,25 @@ sharding:
     data-sources:
       ds0:
         driver-class-name: com.mysql.jdbc.Driver
-        password: 123456
+        password: ENC(ITE8wJryM8hVnofDKQodFzPZuPpTaMtX71YDoOTdh0A=)
         url: jdbc:mysql://localhost:3306/job?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
+        username: ENC(3OW8RQaoiHu1DXfDny4FDP0W5KOSVcWN5yWNxQ6Q4UE=)
       ds1:
         driver-class-name: com.mysql.jdbc.Driver
         password: 123456
         url: jdbc:mysql://localhost:3306/job_slave?useUnicode=true&characterEncoding=utf-8&useSSL=false
         username: root
+#混合测试配置
+chaos:
+  monkey:
+    assaults:
+      level: 8
+      latencyRangeStart: 1000
+      latencyRangeEnd: 10000
+      exceptionsActive: true
+      killApplicationActive: true
+    watcher:
+      repository: true
+      restController: true
+custom:
+  name: anoyi
