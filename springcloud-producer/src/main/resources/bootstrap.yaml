@@ -86,6 +86,12 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 123456
+  http:
+    encoding:
+      forceRequest: true
+      force-response: true
+      charset: utf-8
+      enabled: true
 #admin client配置
 management:
   endpoints:
