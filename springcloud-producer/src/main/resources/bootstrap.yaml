@@ -86,6 +86,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 123456
+  #请求相应强制使用utf-8
   http:
     encoding:
       forceRequest: true
