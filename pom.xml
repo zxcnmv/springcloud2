@@ -187,6 +187,15 @@
                 <version>${easypoi.version}</version>
             </dependency>
 
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>com.cuisongliu</groupId>
+                <artifactId>kaptcha-spring-boot-starter</artifactId>
+                <version>1.3</version>
+            </dependency>
+
+
+
 
             <!-- 基准测试 https://www.jianshu.com/p/23abfe3251ca -->
             <dependency>
@@ -207,15 +216,12 @@
                 <version>${jmeter.version}</version>
             </dependency>
 
-            <!-- 混合测试 https://www.jianshu.com/p/ca4cebefd1cc-->
+            <!-- 混合测试 https://www.jianshu.com/p/fc54dd6d2e95 -->
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>chaos-monkey-spring-boot</artifactId>
                 <version>${chaos.version}</version>
             </dependency>
-
-
-
 
         </dependencies>
     </dependencyManagement>
