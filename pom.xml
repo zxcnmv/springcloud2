@@ -52,6 +52,7 @@
         <juniversalchardet.version>1.0.3</juniversalchardet.version>
         <bcprov-jdk15on.version>1.60</bcprov-jdk15on.version>
         <okhttp.version>3.10.0</okhttp.version>
+        <contiperf.version>2.3.4</contiperf.version>
     </properties>
 
     <modules>
@@ -258,7 +259,7 @@
             <dependency>
                 <groupId>org.databene</groupId>
                 <artifactId>contiperf</artifactId>
-                <version>2.3.4</version>
+                <version>${contiperf.version}</version>
                 <scope>test</scope>
             </dependency>
 
