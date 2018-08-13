@@ -41,7 +41,7 @@ public class PropertyDemo {
      * 1. 通过注入普通字符串
      */
     public void getAttrByValue() {
-        System.out.println("2-1. 通过注入Environment获取值: " + str);
+        System.out.println("2-1. 通过value获取值: " + str);
     }
 
     /**
