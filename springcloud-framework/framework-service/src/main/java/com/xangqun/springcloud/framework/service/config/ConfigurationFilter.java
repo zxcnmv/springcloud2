@@ -13,7 +13,6 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.filter.HttpPutFormContentFilter;
 import org.springframework.web.filter.CorsFilter;
@@ -28,20 +27,6 @@ public class ConfigurationFilter {
 	protected String characterEncoding;
 	@Value("${allow.cross.domain:*}")
 	private String allowDomain;
-
-	@Bean
-	public FilterRegistrationBean characterEncodingFilter() {
-		log.debug("autoconfig characterEncodingFilter ...");
-		FilterRegistrationBean reg = new FilterRegistrationBean();
-		OrderedCharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
-		filter.setEncoding(characterEncoding);
-		filter.setForceResponseEncoding(true);
-		filter.setForceEncoding(true);
-		reg.setFilter(filter);
-		reg.setOrder(-1);//设置优先级
-		reg.addUrlPatterns("/*");
-		return reg;
-	}
 
 	@Bean
 	public RemoteIpFilter remoteIpFilter() {
