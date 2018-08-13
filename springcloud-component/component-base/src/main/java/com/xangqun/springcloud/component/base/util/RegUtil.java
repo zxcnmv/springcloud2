@@ -1,4 +1,4 @@
-package com.xangqun.springcloud;
+package com.xangqun.springcloud.component.base.util;
 
 public class RegUtil {
 

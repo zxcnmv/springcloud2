@@ -24,6 +24,7 @@
     </properties>
 
     <modules>
+        <module>component-base</module>
         <module>component-redis</module>
         <module>component-rabbitmq</module>
         <module>component-lock</module>
