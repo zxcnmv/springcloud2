@@ -41,6 +41,7 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
+  #验证码配置
   kaptcha:
     enable: true
     suffix: suffix
@@ -54,6 +55,11 @@ spring:
       kaptcha.session.key: KAPTCHA_SESSION_KEY
       kaptcha.textproducer.char.length: "4"
       kaptcha.textproducer.font.names: 宋体,楷体,微软雅黑
+  #文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 5m
+      max-request-size: 10m
 
 feign:
   hystrix:
