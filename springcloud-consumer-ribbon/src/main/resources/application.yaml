@@ -40,6 +40,12 @@ spring:
     properties.mail.smtp.ssl.enable: true
     default-encoding: utf-8
     from: xx@126.com
+  #国际化配置
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration:
+      seconds: 3600
 
 spring-demo-service:
   ribbon:

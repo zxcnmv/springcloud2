@@ -3,6 +3,7 @@ import java.util.Date;
 
 import com.xangqun.springcloud.mapper.UserMapper;
 import com.xangqun.springcloud.mapper.entity.User;
+import com.xangqun.springcloud.properties.MessageSourceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,10 @@ public class SpringDemoRibbonController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private MessageSourceUtil messageSourceUtil;
+
 
     @GetMapping("hellox")
     public String hello( int index) {
@@ -39,6 +44,7 @@ public class SpringDemoRibbonController {
 
     @RequestMapping("hello")
     public String port() {
+        messageSourceUtil.getMessage("welcome");
         return springDemoRibbonService.port();
     }
 }
